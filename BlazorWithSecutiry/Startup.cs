@@ -15,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorWithSecutiry.Areas.Identity;
 using BlazorWithSecutiry.Data;
+using BlazorWithSecutiry.Service;
+using BlazorWithSecutiry.DataAccess;
 
 namespace BlazorWithSecutiry
 {
@@ -34,12 +36,22 @@ namespace BlazorWithSecutiry
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-            services.AddSingleton<WeatherForecastService>();
+
+            services.AddSingleton<EmployeeService>();
+            services.AddSingleton<CourseService>();
+            services.AddSingleton<AuthenticationService>();
+            //services.AddBlazorise(options =>
+            //{
+            //    options.ChangeTextOnKeyPress = true;
+            //}) // from v0.6.0-preview4
+            //.AddBootstrapProviders()
+            //.AddFontAwesomeIcons();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

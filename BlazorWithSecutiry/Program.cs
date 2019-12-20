@@ -23,6 +23,8 @@ namespace BlazorWithSecutiry
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    WebHost.CreateDefaultBuilder(args).UseSetting(WebHostDefaults.DetailedErrorsKey, "true");
+                    WebHost.CreateDefaultBuilder(args).UseEnvironment(Environments.Development);
                 });
     }
 }
