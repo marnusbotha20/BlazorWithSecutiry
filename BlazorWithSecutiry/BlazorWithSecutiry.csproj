@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\**" />
+    <Content Remove="Data\Migrations\**" />
+    <EmbeddedResource Remove="Data\Migrations\**" />
+    <None Remove="Data\Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazorise.Bootstrap" Version="0.8.7.2" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.8.7.2" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="0.7.0" />
@@ -22,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="DAL\" />
-    <Folder Include="Data\Migrations\" />
     <Folder Include="Service\" />
   </ItemGroup>
 
