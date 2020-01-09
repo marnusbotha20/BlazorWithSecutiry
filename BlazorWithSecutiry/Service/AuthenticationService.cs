@@ -17,14 +17,7 @@ namespace BlazorWithSecutiry.Service
             }, "Fake authentication type");
 
             var user = new ClaimsPrincipal(identity);
-            var test = new AuthenticationState(user);
-
-            return await Task.FromResult(test);
-        }
-
-        public async Task<bool> AuthenticateAsync(string username)
-        {
-            return true;
+            return await Task.FromResult(new AuthenticationState(user));
         }
     }
 }

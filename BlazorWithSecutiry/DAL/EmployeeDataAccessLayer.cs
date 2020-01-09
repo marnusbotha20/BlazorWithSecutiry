@@ -15,6 +15,7 @@ namespace BlazorWithSecutiry.DataAccess
         {
             try
             {
+                
                 return db.Employees.ToList();
             }
             catch (Exception ex)
