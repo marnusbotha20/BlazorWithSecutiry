@@ -909,9 +909,9 @@ ol {
 ---------------------*/
 
 .page-top-section {
-	height: 500px;
+	height: 150px;
 	text-align: center;
-	padding-top: 300px;
+	padding-top: 150px;
 }
 
 .page-top-section h2 {
@@ -1771,4 +1771,10 @@ ol {
 	.about-list {
 		padding-left: 40px;
 	}
+}
+
+
+/*Custom Styles*/
+section {
+	background: #eaeaea;
 }

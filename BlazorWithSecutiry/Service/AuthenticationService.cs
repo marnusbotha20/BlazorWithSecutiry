@@ -7,8 +7,6 @@ namespace BlazorWithSecutiry.Service
 {
     public class AuthenticationService //: AuthenticationStateProvider
     {
-        EmployeeDataAccessLayer objemployee = new EmployeeDataAccessLayer();
-
         public async Task<AuthenticationState> GetAuthenticationStateAsync(string username)
         {
             var identity = new ClaimsIdentity(new[]

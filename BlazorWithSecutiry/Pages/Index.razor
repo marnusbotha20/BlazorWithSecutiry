@@ -2,28 +2,32 @@
 @inject IJSRuntime JSRuntime
 
 <!-- Hero section -->
-<section class="hero-section">
-    <div class="hero-slider owl-carousel">
-        <div class="hs-item set-bg" data-setbg="img/bg.jpg">
-            <div class="container">
-                <h2>The Best Hosting</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque,</p>
-                <p>at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
-                <div class="clearfix"></div>
-                <a href="" class="site-btn sb-c1">Read More</a>
+    <section class="hero-section">
+        @*<div class="hero-slider owl-carousel">
+            <div class="hs-item set-bg" data-setbg="img/bg.jpg">
+                <div class="container">
+                    <h2>The Best Hosting</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque,</p>
+                    <p>at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+                    <div class="clearfix"></div>
+                    <a href="" class="site-btn sb-c1">Read More</a>
+                </div>
             </div>
-        </div>
-        <div class="hs-item set-bg" data-setbg="img/bg.jpg">
-            <div class="container">
-                <h2>The Best Hosting</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque,</p>
-                <p>at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
-                <div class="clearfix"></div>
-                <a href="" class="site-btn sb-c1">Read More</a>
+            <div class="hs-item set-bg" data-setbg="img/bg.jpg">
+                <div class="container">
+                    <h2>The Best Hosting</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque,</p>
+                    <p>at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+                    <div class="clearfix"></div>
+                    <a href="" class="site-btn sb-c1">Read More</a>
+                </div>
             </div>
+        </div>*@
+
+        <div class="hs-item set-bg" data-setbg="img/bg.jpg">
+            <p>Cloud<span>83</span></p>
         </div>
-    </div>
-</section>
+    </section>
 <!-- Hero section end -->
 <!-- Feature section -->
 <section class="feature-section spad">
@@ -45,7 +49,7 @@
                 <p>Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
             </div>
         </div>
-        <button @onclick="ShowAlert">Show Alert</button>
+        @*<button @onclick="ShowAlert">Show Alert</button>*@
     </div>
 </section>
 <!-- Feature section end -->
@@ -204,112 +208,9 @@
     </div>
 </section>
 <!-- Banner section end -->
-<!-- Footer top section -->
-<section class="footer-top-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-12">
-                <div class="footer-widget about-widget">
-                    <img src="img/logo.png" alt="">
-                    <p>Sed ultrices interdum libero, laoreet facilisis dui fringilla ut. Nullam nisi sem, tristique ut sapien nec, tempus auctor purus. Maecenas eu lectus non dolor euismod dignissim vitae vel tortor. </p>
-                    <div class="social-links">
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4">
-                <div class="footer-widget">
-                    <h5 class="fw-title">Our Products</h5>
-                    <ul>
-                        <li><a href="#">Web Hosting</a></li>
-                        <li><a href="#">Reseller Hosting</a></li>
-                        <li><a href="#">VPS Hosting</a></li>
-                        <li><a href="#">Dedicated Servers</a></li>
-                        <li><a href="#">Windows Hosting</a></li>
-                        <li><a href="#">Cloud Hosting</a></li>
-                        <li><a href="#">Linux Servers</a></li>
-                        <li><a href="#">WordPress Hosting</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4">
-                <div class="footer-widget">
-                    <h5 class="fw-title">Our Solutions</h5>
-                    <ul>
-                        <li><a href="">Reseller Hosting</a></li>
-                        <li><a href="">WordPress Hosting</a></li>
-                        <li><a href="">VPS Hosting</a></li>
-                        <li><a href="">Dedicated Servers</a></li>
-                        <li><a href="">Windows Hosting</a></li>
-                        <li><a href="">Cloud Hosting</a></li>
-                        <li><a href="">Linux Servers</a></li>
-                        <li><a href="">Web Hosting</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4">
-                <div class="footer-widget">
-                    <h5 class="fw-title">Our Products</h5>
-                    <ul>
-                        <li><a href="#">Dedicated Servers</a></li>
-                        <li><a href="#">Windows Hosting</a></li>
-                        <li><a href="#">Cloud Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="footer-widget">
-                    <h5 class="fw-title">Company</h5>
-                    <ul>
-                        <li><a href="#">Dedicated Servers</a></li>
-                        <li><a href="#">Windows Hosting</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Footer top section end -->
-<!-- Footer section -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="footer-nav">
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About us</a></li>
-                <li><a href="service.html">Services</a></li>
-                <li><a href="blog.html">News</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="copyright">
-            <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
 
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
-    </div>
-</footer>
-<!-- Footer section end -->
 
-<style>
-    .hs-item {
-        background-image: url("img/bg.jpg");
-    }
 
-    .banner-section {
-        background-image: url("img/banner-bg.jpg");
-    }
-
-    .Services-section {
-        background-image: url("img/service-bg.jpg");
-    }
-</style>
 
 @code{
     private async Task ShowAlert()

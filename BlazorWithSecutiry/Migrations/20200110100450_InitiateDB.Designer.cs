@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorWithSecutiry.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200110100212_InitiateDB")]
+    [Migration("20200110100450_InitiateDB")]
     partial class InitiateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

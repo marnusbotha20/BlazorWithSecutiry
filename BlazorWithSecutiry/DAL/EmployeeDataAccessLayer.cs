@@ -10,14 +10,13 @@ namespace BlazorWithSecutiry.DataAccess
 {
     public class EmployeeDataAccessLayer
     {
-        private readonly ApplicationDbContext db;
+        private ApplicationDbContext _context = new ApplicationDbContext();
 
         public IEnumerable<Employee> GetAllEmployees()
         {
             try
             {
-                
-                return db.Employees.ToList();
+                return _context.Employees.ToList();
             }
             catch (Exception ex)
             {
@@ -29,8 +28,8 @@ namespace BlazorWithSecutiry.DataAccess
         {
             try
             {
-                var employee = db.Employees.Find(id);
-                db.Entry(employee).State = EntityState.Detached;
+                var employee = _context.Employees.Find(id);
+                _context.Entry(employee).State = EntityState.Detached;
                 return employee;
             }
             catch (Exception ex)
@@ -43,8 +42,8 @@ namespace BlazorWithSecutiry.DataAccess
         {
             try
             {
-                db.Employees.Add(employee);
-                db.SaveChanges();
+                _context.Employees.Add(employee);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -56,8 +55,8 @@ namespace BlazorWithSecutiry.DataAccess
         {
             try
             {
-                db.Courses.Add(courses);
-                db.SaveChanges();
+                _context.Courses.Add(courses);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -67,17 +66,17 @@ namespace BlazorWithSecutiry.DataAccess
 
         public void UpdateEmployee(Employee employee)
         {
-            db.Entry(employee).State = EntityState.Modified;
-            db.SaveChanges();
+            _context.Entry(employee).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public void DeleteEmployee(int id)
         {
             try
             {
-                Employee emp = db.Employees.Find(id);
-                db.Employees.Remove(emp);
-                db.SaveChanges();
+                Employee emp = _context.Employees.Find(id);
+                _context.Employees.Remove(emp);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -90,7 +89,7 @@ namespace BlazorWithSecutiry.DataAccess
         {
             try
             {
-                return db.Cities.ToList();
+                return _context.Cities.ToList();
             }
             catch (Exception ex)
             {
@@ -101,12 +100,12 @@ namespace BlazorWithSecutiry.DataAccess
         //Course Methods
         public List<Courses> GetCourses()
         {
-            return db.Courses.Include(x => x.EmployeeCourse).ToList();
+            return _context.Courses.Include(x => x.EmployeeCourse).ToList();
         }
         public List<Courses> GetEmployeeCourses(long Id, bool link)
         {
-            var courseData = db.Courses.ToList();
-            var LinkingTableData = db.EmployeeCourse.Where(x => x.EmployeeId == Id).ToList();
+            var courseData = _context.Courses.ToList();
+            var LinkingTableData = _context.EmployeeCourse.Where(x => x.EmployeeId == Id).ToList();
 
             if (link)
             {
@@ -117,15 +116,15 @@ namespace BlazorWithSecutiry.DataAccess
         }
         public int GetCoursesCount(long Id)
         {
-            var counter = db.EmployeeCourse.Where(x => x.CourseId == Id).ToList().Count();
+            var counter = _context.EmployeeCourse.Where(x => x.CourseId == Id).ToList().Count();
             return counter;
         }
         public double CountCredits(long Id)
         {
             double totCredits = 0;
 
-            List<Courses> courses = db.Courses.ToList();
-            List<EmployeeCourse> employeeCourses = db.EmployeeCourse.ToList();
+            List<Courses> courses = _context.Courses.ToList();
+            List<EmployeeCourse> employeeCourses = _context.EmployeeCourse.ToList();
 
             var list = (from x in courses
                        join y in employeeCourses on x.CourseId equals y.CourseId into results
@@ -148,8 +147,8 @@ namespace BlazorWithSecutiry.DataAccess
         {
             try
             {
-                var course = db.Courses.Find(id);
-                db.Entry(course).State = EntityState.Detached;
+                var course = _context.Courses.Find(id);
+                _context.Entry(course).State = EntityState.Detached;
                 return course;
             }
             catch (Exception ex)
@@ -160,17 +159,17 @@ namespace BlazorWithSecutiry.DataAccess
 
         public void UpdateCourse(Courses courses)
         {
-            db.Entry(courses).State = EntityState.Modified;
-            db.SaveChanges();
+            _context.Entry(courses).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public void DeleteCourse(int id)
         {
             try
             {
-                Courses c = db.Courses.Find(id);
-                db.Courses.Remove(c);
-                db.SaveChanges();
+                Courses c = _context.Courses.Find(id);
+                _context.Courses.Remove(c);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -193,14 +192,14 @@ namespace BlazorWithSecutiry.DataAccess
 
                     if (LinkAction)
                     {
-                        db.EmployeeCourse.Add(item);
+                        _context.EmployeeCourse.Add(item);
                     }
                     else
                     {
-                        var ec = db.EmployeeCourse.Find(item.CourseId, employeeID);
-                        db.EmployeeCourse.Remove(ec);
+                        var ec = _context.EmployeeCourse.Find(item.CourseId, employeeID);
+                        _context.EmployeeCourse.Remove(ec);
                     }
-                    db.SaveChanges();
+                    _context.SaveChanges();
                 }
                 catch (Exception ex)
                 {
