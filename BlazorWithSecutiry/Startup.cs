@@ -15,17 +15,23 @@ using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.StaticFiles;
+using System;
+using Microsoft.Extensions.Options;
 
 namespace BlazorWithSecutiry
 {
-    public class Startup
+    public class Startup : IPostConfigureOptions<StaticFileOptions>
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
 
-        public IConfiguration Configuration { get; }
+        private readonly IWebHostEnvironment _env;
+        private readonly IConfiguration _configuration;
+
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
+        {
+            _env = env;
+            _configuration = configuration;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -58,7 +64,6 @@ namespace BlazorWithSecutiry
 
             services.AddDirectoryBrowser();
             //services.AddEditor();
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -138,6 +143,25 @@ namespace BlazorWithSecutiry
                 RequestPath = "/MyCSS"
             });
 
+        }
+
+        public void PostConfigure(string name, StaticFileOptions options)
+        {
+
+            // Basic initialization in case the options weren't initialized by any other component
+            options.ContentTypeProvider = options.ContentTypeProvider ?? new FileExtensionContentTypeProvider();
+
+            if (options.FileProvider == null && _env.WebRootFileProvider == null)
+            {
+                throw new InvalidOperationException("Missing FileProvider.");
+            }
+
+            options.FileProvider = options.FileProvider ?? _env.WebRootFileProvider;
+
+
+            // Add our provider
+            var filesProvider = new ManifestEmbeddedFileProvider(GetType().Assembly, "resources");
+            options.FileProvider = new CompositeFileProvider(options.FileProvider, filesProvider);
         }
     }
 }

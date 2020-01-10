@@ -54,6 +54,15 @@
 
 
     <script>
+        function ShowErrorMessage(message) {
+            debugger
+            var messageBox = $("#ErrorMessageDisplay");
+            messageBox.css("display", "block");
+
+            var messageBoxText = $("#ErrorMessageDisplayMessage");
+            messageBoxText.html(message);
+        }
+
         function StartSlider() {
 
             /*------------------

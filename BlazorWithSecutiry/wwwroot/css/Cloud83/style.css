@@ -1778,3 +1778,12 @@ ol {
 section {
 	background: #eaeaea;
 }
+
+div#ErrorMessageDisplay {
+	position: absolute;
+	z-index: 9999999;
+	width: 100%;
+	color: #ffffff;
+	background-color: #ae2525bf;
+	border-color: #ff001b;
+}

@@ -1,6 +1,7 @@
 ﻿using BlazorWithSecutiry.DataAccess;
 using BlazorWithSecutiry.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace BlazorWithSecutiry.Service
 {
     public class EmployeeService
     {
+        private readonly ILogger _logger;
         EmployeeDataAccessLayer objemployee = new EmployeeDataAccessLayer();
         public Task<List<Employee>> GetEmployeeList()
         {

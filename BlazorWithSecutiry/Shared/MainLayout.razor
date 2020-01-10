@@ -1,4 +1,11 @@
 ﻿@inherits LayoutComponentBase
+<!--Error Message-->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="ErrorMessageDisplay" style="display:none;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <span id="ErrorMessageDisplayMessage"></span>
+    </div>
+<!--Error Message end-->
+
 <!-- Header section -->
 <header class="header-section">
     <div class="container">
@@ -48,11 +55,9 @@
     <!-- Page Top section -->
     <section class="page-top-section set-bg" data-setbg="img/page-top-bg/3.jpg"></section>
     <!-- Page Top section end -->
-
     <!-- Body section -->
     @Body
     <!-- Body section end -->
-
     <!-- Footer top section -->
     <section class="footer-top-section">
         <div class="container">
@@ -122,7 +127,6 @@
         </div>
     </section>
     <!-- Footer top section end -->
-
     <!-- Footer section -->
     <footer class="footer-section">
         <div class="container">

@@ -9,7 +9,7 @@ namespace BlazorWithSecutiry.DataAccess
 {
     public class CommonDAL
     {
-        private readonly ApplicationDbContext db;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public void AddContactUs(ContactUsDetails model)
         {

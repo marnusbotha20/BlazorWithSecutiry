@@ -2,9 +2,12 @@
 
 @using BlazorWithSecutiry.Service
 @using BlazorWithSecutiry.Models
+@using Microsoft.Extensions.Logging;
 
 @inject EmployeeService employeeService
 @inject CourseService CourseService
+@inject ILogger<FetchEmployee> Logger
+@inject IJSRuntime JSRuntime;
 
 <style>
     .table {
@@ -175,19 +178,19 @@
                                                     </div>
 
                                                     @*<div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="form-group">
-                                                            <label asp-for="Course" class="control-label">Course</label>
-                                                            <select asp-for="Course" class="form-control" @bind="@emp.Course">
-                                                                <option value="">-- Select Course --</option>
-                                                                @foreach (var course in courseList)
-                                                                {
-                                                                    <option value="@course.Id">@course.CourseName</option>
-                                                                }
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>*@
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label asp-for="Course" class="control-label">Course</label>
+                                                                    <select asp-for="Course" class="form-control" @bind="@emp.Course">
+                                                                        <option value="">-- Select Course --</option>
+                                                                        @foreach (var course in courseList)
+                                                                        {
+                                                                            <option value="@course.Id">@course.CourseName</option>
+                                                                        }
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>*@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
@@ -344,76 +347,149 @@
 
     protected async Task GetCities()
     {
-        cityList = await employeeService.GetCities();
+        try
+        {
+            cityList = await employeeService.GetCities();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("GetCities", ex.Message);
+        }
     }
 
     protected async Task GetEmployee()
     {
-        empList = await employeeService.GetEmployeeList();
+        try
+        {
+            empList = await employeeService.GetEmployeeList();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("GetEmployee", ex.Message);
+        }
     }
 
     protected async Task GetCourses()
     {
-        courseList = await employeeService.GetCourses();
+        try
+        {
+            courseList = await employeeService.GetCourses();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("GetCourses", ex.Message);
+        }
     }
 
     protected async Task FilterEmp()
     {
-        await GetEmployee();
-        if (SearchString != "")
+
+        try
         {
-            empList = empList.Where(x => x.FirstName.IndexOf(SearchString, StringComparison.OrdinalIgnoreCase) != -1).ToList();
+            await GetEmployee();
+            if (SearchString != "")
+            {
+                empList = empList.Where(x => x.FirstName.IndexOf(SearchString, StringComparison.OrdinalIgnoreCase) != -1).ToList();
+            }
+
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("FilterEmp", ex.Message);
         }
     }
 
     protected void AddEmp()
     {
-        emp = new Employee();
-        this.modalTitle = "Add Employee";
-        this.isAdd = true;
+
+
+        try
+        {
+            emp = new Employee();
+            this.modalTitle = "Add Employee";
+            this.isAdd = true;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("AddEmp", ex.Message);
+        }
     }
 
     protected async Task EditEmployee(long empID)
     {
-        emp = await employeeService.Details(Convert.ToInt32(empID));
-        this.modalTitle = "Edit Employee";
-        this.isAdd = true;
+
+        try
+        {
+            emp = await employeeService.Details(Convert.ToInt32(empID));
+            this.modalTitle = "Edit Employee";
+            this.isAdd = true;
+
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("EditEmployee", ex.Message);
+        }
     }
 
     protected async Task SaveEmployee()
     {
-        if (emp.EmployeeId != 0)
+        try
         {
-            await Task.Run(() =>
+            if (emp.EmployeeId != 0)
             {
-                employeeService.Edit(emp);
-            });
+                await Task.Run(() =>
+                {
+                    employeeService.Edit(emp);
+                });
+            }
+            else
+            {
+                await Task.Run(() =>
+                {
+                    employeeService.Create(emp);
+                });
+            }
+            this.isAdd = false;
+            await GetEmployee();
         }
-        else
+        catch (Exception ex)
         {
-            await Task.Run(() =>
-            {
-                employeeService.Create(emp);
-            });
+            ErrorMessage("SaveEmployee", ex.Message);
         }
-        this.isAdd = false;
-        await GetEmployee();
     }
 
     protected async Task DeleteConfirm(long empID)
     {
-        emp = await employeeService.Details(Convert.ToInt32(empID));
-        this.isDelete = true;
+
+
+        try
+        {
+            emp = await employeeService.Details(Convert.ToInt32(empID));
+            this.isDelete = true;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("DeleteConfirm", ex.Message);
+        }
     }
 
     protected async Task DeleteEmployee(long empID)
     {
-        await Task.Run(() =>
+
+
+        try
         {
-            employeeService.Delete(Convert.ToInt32(empID));
-        });
-        this.isDelete = false;
-        await GetEmployee();
+            await Task.Run(() =>
+       {
+           employeeService.Delete(Convert.ToInt32(empID));
+       });
+            this.isDelete = false;
+            await GetEmployee();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("DeleteEmployee", ex.Message);
+        }
     }
 
     protected void CloseModal()
@@ -425,53 +501,101 @@
 
     void CheckboxClicked(int CourseId, object checkedValue)
     {
-        if ((bool)checkedValue)
+        try
         {
-            if (!EmployeeCourses.Contains(CourseId.ToString()))
+            if ((bool)checkedValue)
             {
-                EmployeeCourses.Add(CourseId.ToString());
+                if (!EmployeeCourses.Contains(CourseId.ToString()))
+                {
+                    EmployeeCourses.Add(CourseId.ToString());
+                }
+            }
+            else
+            {
+                if (EmployeeCourses.Contains(CourseId.ToString()))
+                {
+                    EmployeeCourses.Remove(CourseId.ToString());
+                }
             }
         }
-        else
+        catch (Exception ex)
         {
-            if (EmployeeCourses.Contains(CourseId.ToString()))
-            {
-                EmployeeCourses.Remove(CourseId.ToString());
-            }
+            ErrorMessage("CheckboxClicked", ex.Message);
         }
     }
 
     protected async Task LinkCoursesConfirm(long empID)
     {
+        try
+        {
+            
         this.isLink = true;
         this.modalTitle = "Link Employee";
         this.selectedEmployeeId = empID;
         this.LinkAction = true;
         employeeCourseList = await CourseService.GetEmployeeCourses(empID, true);
+
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("LinkCoursesConfirm", ex.Message);
+        }
     }
 
     protected async Task DeLinkCoursesConfirm(long empID)
     {
-        this.isLink = true;
-        this.modalTitle = "De-Link Employee";
-        this.selectedEmployeeId = empID;
-        this.LinkAction = false;
+        try
+        {
+            this.isLink = true;
+            this.modalTitle = "De-Link Employee";
+            this.selectedEmployeeId = empID;
+            this.LinkAction = false;
 
-        employeeCourseList = await CourseService.GetEmployeeCourses(empID, false);
+            employeeCourseList = await CourseService.GetEmployeeCourses(empID, false);
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("DeLinkCoursesConfirm", ex.Message);
+        }
     }
 
     protected async Task LinkCourses(long empID, bool linkAction)
     {
-        CourseService.LinkCourses(empID, EmployeeCourses, linkAction);
+        try
+        {
+            CourseService.LinkCourses(empID, EmployeeCourses, linkAction);
 
-        this.isLink = false;
-        await GetEmployee();
+            this.isLink = false;
+            await GetEmployee();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("LinkCourses", ex.Message);
+        }
+
     }
 
     protected double CountCredits(long Id)
     {
+        var count = 0.0;
+        try
+        {
+            count = CourseService.CountCredits(Id);
+            return count;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage("CountCredits", ex.Message);
+        }
 
-        var count = CourseService.CountCredits(Id);
         return count;
+    }
+
+    protected void ErrorMessage(string header, string Errormessage)
+    {
+        var message = header + ": " + Errormessage;
+        JSRuntime.InvokeVoidAsync("ShowErrorMessage", message);
+
+        Logger.LogWarning(Errormessage, message);
     }
 }
