@@ -9,16 +9,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BlazorWithSecutiry</title>
     <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />
-    <link href="css/login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+
+    <link href="_content/Blazorise/blazorise.css" rel="stylesheet" />
+    <link href="_content/Blazorise.Bootstrap/blazorise.bootstrap.css" rel="stylesheet" />
+
+    <!-- inside of body section and after the <app> tag  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="_content/Blazorise/blazorise.js"></script>
+    <script src="_content/Blazorise.Bootstrap/blazorise.bootstrap.js"></script>
+
+    @*Cloud83 styles*@
+    <link href="/css/Cloud83/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/Cloud83/font-awesome.min.css" rel="stylesheet" />
+    <link href="/css/Cloud83/magnific-popup.css" rel="stylesheet" />
+    <link href="/css/Cloud83/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/css/Cloud83/style.css" rel="stylesheet" />
+    <link href="/css/Cloud83/animate.css" rel="stylesheet" />
 
 </head>
 <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
     <app>
         @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
     </app>
 
     <script src="_framework/blazor.server.js"></script>
+
+    @*Cloud83 scripts*@
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/circle-progress.min.js"></script>
+    <script src="/js/main.js"></script>
+
+
+    <script>
+        function StartSlider() {
+            alert("GHJGHJG");
+            /*------------------
+                Navigation
+            --------------------*/
+            $('.nav-switch').on('click', function (event) {
+                $(this).toggleClass('active');
+                $('.header-right').toggleClass('active');
+                event.preventDefault();
+            });
+
+
+            /*------------------
+                Background Set
+            --------------------*/
+            $('.set-bg').each(function () {
+                var bg = $(this).data('setbg');
+                $(this).css('background-image', 'url(' + bg + ')');
+            });
+
+
+            /*------------------
+                Hero Slider
+            --------------------*/
+            $('.hero-slider').owlCarousel({
+                loop: true,
+                nav: false,
+                dots: true,
+                mouseDrag: false,
+                animateOut: 'fadeOut',
+                animateIn: 'fadeIn',
+                items: 1,
+                autoplay: true
+            });
+
+            var dot = $('.hero-slider .owl-dot');
+            dot.each(function () {
+                var index = $(this).index() + 1;
+                if (index < 10) {
+                    $(this).html('0').append(index);
+                    $(this).append('<span>.</span>');
+                } else {
+                    $(this).html(index);
+                    $(this).append('<span>.</span>');
+                }
+            });
+
+
+            /*------------------
+                Video Popup
+            --------------------*/
+            $('.video-popup').magnificPopup({
+                type: 'iframe'
+            });
+
+
+
+
+            /*------------------
+                Testimonials
+            --------------------*/
+            $('.testimonials-slider').owlCarousel({
+                loop: true,
+                nav: true,
+                navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                dots: true,
+                margin: 128,
+                center: true,
+                items: 1
+            });
+            var dot = $('.testimonials-slider .owl-dot');
+            dot.each(function () {
+                var index = $(this).index() + 1;
+                if (index < 10) {
+                    $(this).html('0').append(index);
+                    $(this).append('<span>.</span>');
+                } else {
+                    $(this).html(index);
+                    $(this).append('<span>.</span>');
+                }
+            });
+
+
+
+
+            /*------------------
+                Accordions
+            --------------------*/
+            $('.panel-link').on('click', function (e) {
+                $('.panel-link').removeClass('active');
+                var $this = $(this);
+                if (!$this.hasClass('active')) {
+                    $this.addClass('active');
+                }
+                e.preventDefault();
+            });
+
+
+            /*------------------
+                Circle progress
+            --------------------*/
+            $('.circle-progress').each(function () {
+                var cpvalue = $(this).data("cpvalue");
+                var cpcolor = $(this).data("cpcolor");
+                var cptitle = $(this).data("cptitle");
+                var cpid = $(this).data("cpid");
+
+                $(this).append('<div class="' + cpid + '"></div><div class="progress-info"><h2>' + cpvalue + '%</h2><p>' + cptitle + '</p></div>');
+
+                if (cpvalue < 100) {
+
+                    $('.' + cpid).circleProgress({
+                        value: '0.' + cpvalue,
+                        size: 180,
+                        thickness: 7,
+                        fill: cpcolor,
+                        emptyFill: "rgba(0, 0, 0, 0)"
+                    });
+                } else {
+                    $('.' + cpid).circleProgress({
+                        value: 1,
+                        size: 180,
+                        thickness: 7,
+                        fill: cpcolor,
+                        emptyFill: "rgba(0, 0, 0, 0)"
+                    });
+                }
+
+            });
+        }
+    </script>
 </body>
 </html>

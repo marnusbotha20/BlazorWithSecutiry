@@ -9,6 +9,12 @@ using Microsoft.Extensions.Hosting;
 using BlazorWithSecutiry.Data;
 using BlazorWithSecutiry.Service;
 using Microsoft.AspNetCore.Components.Server;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace BlazorWithSecutiry
 {
@@ -39,12 +45,17 @@ namespace BlazorWithSecutiry
             services.AddSingleton<EmployeeService>();
             services.AddSingleton<CourseService>();
             services.AddSingleton<AuthenticationService>();
-            //services.AddBlazorise(options =>
-            //{
-            //    options.ChangeTextOnKeyPress = true;
-            //}) // from v0.6.0-preview4
-            //.AddBootstrapProviders()
-            //.AddFontAwesomeIcons();
+            services.AddSingleton<CommonService>();
+
+            services.AddBlazorise(options =>
+            {
+                options.ChangeTextOnKeyPress = true;
+            }) // from v0.6.0-preview4
+            .AddBootstrapProviders()
+            .AddFontAwesomeIcons();
+
+            //services.AddEditor();
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +78,9 @@ namespace BlazorWithSecutiry
 
             app.UseRouting();
 
+            app.ApplicationServices.UseBootstrapProviders();
+            app.ApplicationServices.UseFontAwesomeIcons();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -76,6 +90,16 @@ namespace BlazorWithSecutiry
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+
+            app.UseStaticFiles(); // For the wwwroot folder
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //    Path.Combine(Directory.GetCurrentDirectory(), "resources")),
+            //    RequestPath = "/resources"
+            //});
+
         }
     }
 }

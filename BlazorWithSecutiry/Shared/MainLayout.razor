@@ -1,15 +1,49 @@
 ﻿@inherits LayoutComponentBase
-
-<div class="sidebar">
-    <NavMenu/>
-</div>
-
-<div class="main">
-    <div class="top-row px-4">
-        <LoginDisplay />
+<!-- Header section -->
+<header class="header-section">
+    <div class="container">
+        <a href="index.html" class="site-logo">
+            <img src="img/logo.png" alt="logo">
+        </a>
+        <!-- Switch button -->
+        <div class="nav-switch">
+            <div class="ns-bar"></div>
+        </div>
+        <div class="header-right">
+            <AuthorizeView>
+                <Authorized>
+                    <ul class="main-menu">
+                        <li class="active">
+                            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                                <span class="oi oi-home" aria-hidden="true"></span> Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink class="nav-link" href="FetchEmployee">
+                                <span class="oi oi-list-rich" aria-hidden="true"></span> Show Employees
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink class="nav-link" href="ShowCourses">
+                                <span class="oi oi-list-rich" aria-hidden="true"></span> Show Courses
+                            </NavLink>
+                        </li>
+                    </ul>
+                </Authorized>
+                <NotAuthorized>
+                    
+                </NotAuthorized>
+            </AuthorizeView>
+            
+            <div class="header-btns">
+                <LoginDisplay />
+            </div>
+        </div>
     </div>
+</header>
 
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+<!-- Header section end -->
+
+<!-- Body section -->
+@Body
+<!-- Body section end -->
