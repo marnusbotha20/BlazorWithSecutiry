@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="DAL\EmployeeContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazorise.Bootstrap" Version="0.8.7.2" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.8.7.2" />
     <PackageReference Include="bootstrap" Version="4.4.1" />
@@ -28,10 +32,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DAL\" />
   </ItemGroup>
 
   <ItemGroup>

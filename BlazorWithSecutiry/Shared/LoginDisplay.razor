@@ -1,16 +1,23 @@
 ﻿<AuthorizeView>
     <Authorized>
-        <NavLink class="nav-link" href="Identity/Account/Manage" Match="NavLinkMatch.All">
+        <NavLink class="nav-link currentUser" href="Identity/Account/Manage" Match="NavLinkMatch.All">
             <span class="oi oi-home" aria-hidden="true"></span> @context.User.Identity.Name
         </NavLink>
         @*<a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>*@
         <form method="post" action="Identity/Account/LogOut">
             <button type="submit" class="site-btn sb-c3">Log out</button>
         </form>
+        <a href="ContactUs" class="site-btn sb-c1">Contact Us</a>
     </Authorized>
     <NotAuthorized>
-        <a href="#" class="site-btn sb-c1">Support <span>24/7</span></a>
+        <a href="ContactUs" class="site-btn sb-c1">Contact Us</a>
         <a href="Identity/Account/Register" class="site-btn sb-c3">Register</a>
         <a href="Identity/Account/Login" class="site-btn sb-c2">Log in</a>
     </NotAuthorized>
 </AuthorizeView>
+
+<style>
+    .currentUser {
+        color:#25ae88!important;
+    }
+</style>

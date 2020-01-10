@@ -1,4 +1,5 @@
-﻿using BlazorWithSecutiry.Models;
+﻿using BlazorWithSecutiry.Data;
+using BlazorWithSecutiry.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace BlazorWithSecutiry.DataAccess
 {
     public class EmployeeDataAccessLayer
     {
-        private readonly EmployeeContext db;
+        private readonly ApplicationDbContext db;
 
         public IEnumerable<Employee> GetAllEmployees()
         {

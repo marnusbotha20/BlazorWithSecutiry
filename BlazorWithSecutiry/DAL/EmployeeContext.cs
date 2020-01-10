@@ -17,6 +17,7 @@ namespace BlazorWithSecutiry.DataAccess
         public DbSet<Cities> Cities { get; internal set; }
         public DbSet<Courses> Courses { get; set; }
         public DbSet<EmployeeCourse> EmployeeCourse { get; set; }
+        public DbSet<ContactUsDetails> ContactUsDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
