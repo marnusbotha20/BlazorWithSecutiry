@@ -54,6 +54,7 @@ namespace BlazorWithSecutiry
             .AddBootstrapProviders()
             .AddFontAwesomeIcons();
 
+            services.AddDirectoryBrowser();
             //services.AddEditor();
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -93,12 +94,47 @@ namespace BlazorWithSecutiry
 
             app.UseStaticFiles(); // For the wwwroot folder
 
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //    Path.Combine(Directory.GetCurrentDirectory(), "resources")),
-            //    RequestPath = "/resources"
-            //});
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img")),
+                RequestPath = "/MyImages"
+            });
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img")),
+                RequestPath = "/MyImages"
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "js")),
+                RequestPath = "/MyJS"
+            });
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "js")),
+                RequestPath = "/MyJS"
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "css")),
+                RequestPath = "/MyCSS"
+            });
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "css")),
+                RequestPath = "/MyCSS"
+            });
 
         }
     }
