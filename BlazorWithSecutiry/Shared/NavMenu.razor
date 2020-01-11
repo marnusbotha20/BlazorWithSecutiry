@@ -3,7 +3,7 @@
     <div class="sidebar-header d-flex align-items-center">
         <AuthorizeView>
             <Authorized>
-                <a href="pages-profile.html">
+                <a href="Profile">
                     <div class="avatar"><img src="/DarkTheme/img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
                 </a>
                 <div class="title">
@@ -22,7 +22,7 @@
         <Authorized>
             <span class="heading">Main</span>
             <ul class="list-unstyled">
-                <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
+                <li class="active"><a href="/"> <i class="icon-home"></i>Home </a></li>
                 <li>
                     <a href="#tablesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Tables </a>
                     <ul id="tablesDropdown" class="collapse list-unstyled ">
@@ -61,15 +61,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-website"></i>Pages </a>
-                    <ul id="pagesDropdown" class="collapse list-unstyled ">
-                        <li><a href="pages-contacts.html">Contacts</a></li>
-                        <li><a href="pages-invoice.html">Invoice</a></li>
-                        <li><a href="login.html">Login page</a></li>
-                        <li><a href="login-2.html">Login v.2 <span class="badge badge-info">New</span></a></li>
-                        <li><a href="pages-profile.html">Profile</a></li>
-                        <li><a href="pages-pricing.html">Pricing table</a></li>
-                    </ul>
+                    <BlazorWithSecutiry.Pages.Submenus.Pages/>
                 </li>
             </ul>
         </Authorized>

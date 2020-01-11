@@ -5,3 +5,16 @@ button.d-none.d-sm-inline {
     border: 1px solid #2d3035;
     color: #22252a;
 }
+
+h5, .h5 {
+    font-size: 0.9rem!important;
+}
+
+.table {
+    color: #9E9E9E!important;
+}
+
+.container {
+    margin: 10px 10px;
+    width: 100%;
+}
