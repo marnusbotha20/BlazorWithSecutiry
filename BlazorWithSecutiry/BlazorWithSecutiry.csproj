@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Identity\IdentityHostingStartup.cs" />
     <Compile Remove="DAL\EmployeeContext.cs" />
   </ItemGroup>
 
@@ -32,12 +33,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Areas\Identity\Pages\Account\LogOut.cshtml" />
-    <None Include="Areas\Identity\Pages\Shared\_LoginPartial.cshtml" />
     <None Include="wwwroot\DarkTheme\fonts\dark-dashboard.bin" />
     <None Include="wwwroot\DarkTheme\fonts\dark-dashboard.svg" />
     <None Include="wwwroot\icon-fonts\fontawesome-webfont.svg" />

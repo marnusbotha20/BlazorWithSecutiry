@@ -18,6 +18,8 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.StaticFiles;
 using System;
 using Microsoft.Extensions.Options;
+using BlazorWithSecutiry.Areas.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace BlazorWithSecutiry
 {
@@ -43,11 +45,12 @@ namespace BlazorWithSecutiry
 
             services.AddDbContext<ApplicationDbContext>();
 
-            services.AddDefaultIdentity<Microsoft.AspNetCore.Identity.IdentityUser>()
+            services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
 
             services.AddSingleton<EmployeeService>();
