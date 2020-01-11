@@ -19,6 +19,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <Icon Name="IconName.Tint"></Icon>
+                <span class="fa fa-home">Hallo</span>
                 <AuthorizeView>
                     <Authorized>
                         <div>
@@ -178,19 +180,19 @@
                                                     </div>
 
                                                     @*<div class="row">
-                                                            <div class="col-sm-12">
-                                                                <div class="form-group">
-                                                                    <label asp-for="Course" class="control-label">Course</label>
-                                                                    <select asp-for="Course" class="form-control" @bind="@emp.Course">
-                                                                        <option value="">-- Select Course --</option>
-                                                                        @foreach (var course in courseList)
-                                                                        {
-                                                                            <option value="@course.Id">@course.CourseName</option>
-                                                                        }
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>*@
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="Course" class="control-label">Course</label>
+                                                        <select asp-for="Course" class="form-control" @bind="@emp.Course">
+                                                            <option value="">-- Select Course --</option>
+                                                            @foreach (var course in courseList)
+                                                            {
+                                                                <option value="@course.Id">@course.CourseName</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>*@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">

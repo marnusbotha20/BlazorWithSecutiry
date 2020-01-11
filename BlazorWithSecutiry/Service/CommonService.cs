@@ -11,23 +11,42 @@ namespace BlazorWithSecutiry.Service
         public void Create(ContactUsDetails model)
         {
             common.AddContactUs(model);
-            //SendContactUsEmail(model);
+            SendContactUsEmail(model);
         }
         public void SendContactUsEmail(ContactUsDetails model)
         {
+            var fromAddress = new MailAddress(model.EmailAddress, model.Name);
+            var toAddress = new MailAddress("planetthorndesigns@gmail.com", "Planetthorn Designs");
+            const string fromPassword = "M@rnus2007";
+            const string subject = "Subject";
+            const string body = "Body";
+
             MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
 
             mail.From = new MailAddress(model.EmailAddress);
             mail.To.Add("planetthorndesigns@gmail.com");
             mail.Subject = model.Subject;
             mail.Body = model.Messgae;
 
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("planetthorndesigns@gmail.com", "M@rnus2007");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.UseDefaultCredentials = true;
-            SmtpServer.Send(mail);
+            SmtpClient SmtpServer = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                Credentials = new System.Net.NetworkCredential(fromAddress.Address, fromPassword),
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false
+            };
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                SmtpServer.Send(message);
+            }
         }
     }
 }

@@ -7,8 +7,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlazorWithSecutiry</title>
-    <base href="~/" />
+    <title>Dark Bootstrap Admin</title>
+    <base href="/" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
 
@@ -23,20 +23,23 @@
     <script src="_content/Blazorise/blazorise.js"></script>
     <script src="_content/Blazorise.Bootstrap/blazorise.bootstrap.js"></script>
 
-    @*Cloud83 styles*@
-    <link href="/css/Cloud83/bootstrap.min.css" rel="stylesheet" />
-    <link href="/css/Cloud83/font-awesome.min.css" rel="stylesheet" />
-    <link href="/css/Cloud83/magnific-popup.css" rel="stylesheet" />
-    <link href="/css/Cloud83/owl.carousel.min.css" rel="stylesheet" />
-    <link href="/css/Cloud83/style.css" rel="stylesheet" />
-    <link href="/css/Cloud83/animate.css" rel="stylesheet" />
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="~/DarkTheme/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="~/DarkTheme/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Custom Font Icons CSS-->
+    <link rel="stylesheet" href="~/DarkTheme/css/font.css">
+    <!-- Google fonts - Muli-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap" rel="stylesheet">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="~/DarkTheme/css/style.default.premium.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="~/DarkTheme/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/DarkTheme/img/favicon.ico">
 
 </head>
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
 
     <app>
         @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
@@ -44,14 +47,18 @@
 
     <script src="_framework/blazor.server.js"></script>
 
-    @*Cloud83 scripts*@
-    <script src="/js/jquery-3.2.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/jquery.magnific-popup.min.js"></script>
-    <script src="/js/circle-progress.min.js"></script>
-    <script src="/js/main.js"></script>
-
+    <script src="~/DarkTheme/vendor/jquery/jquery.min.js"></script>
+    <script src="~/DarkTheme/vendor/popper.js/umd\popper.min.js"></script>
+    <script src="~/DarkTheme/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/DarkTheme/vendor/jquery.cookie/jquery.cookie.js"></script>
+    <script src="~/DarkTheme/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/DarkTheme/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/DarkTheme/js/charts-home.js"></script>
+    <!-- Notifications-->
+    <script src="~/DarkTheme/vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+    <script src="~/DarkTheme/vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    <script src="~/DarkTheme/js/home-premium.js"></script>
+    <script src="~/DarkTheme/js/front.js"></script>
 
     <script>
         function ShowErrorMessage(message) {

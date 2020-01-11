@@ -1,37 +1,90 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">EMS</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿<nav id="sidebar">
+    <!-- Sidebar Header-->
+    <div class="sidebar-header d-flex align-items-center">
+        <AuthorizeView>
+            <Authorized>
+                <a href="pages-profile.html">
+                    <div class="avatar"><img src="/DarkTheme/img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                </a>
+                <div class="title">
+                    <h1 class="h5">
+                        @context.User.Identity.Name
+                    </h1>
+                    <p>Web Designer</p>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+    </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="FetchEmployee">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Show Employees
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="ShowCourses">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Show Courses
-            </NavLink>
-        </li>
-    </ul>
-</div>
+    <!-- Sidebar Navidation Menus-->
+
+    <AuthorizeView>
+        <Authorized>
+            <span class="heading">Main</span>
+            <ul class="list-unstyled">
+                <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
+                <li>
+                    <a href="#tablesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Tables </a>
+                    <ul id="tablesDropdown" class="collapse list-unstyled ">
+                        <li><a href="tables.html">Bootstrap tables</a></li>
+                        <li><a href="tables-datatable.html">Datatable</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#chartsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Charts </a>
+                    <ul id="chartsDropdown" class="collapse list-unstyled ">
+                        <li><a href="charts.html">Charts</a></li>
+                        <li><a href="charts-gauge-sparkline.html">Gauge + Sparkline</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#formsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-padnote"></i>Forms </a>
+                    <ul id="formsDropdown" class="collapse list-unstyled ">
+                        <li><a href="forms.html">Basic forms</a></li>
+                        <li><a href="forms-advanced.html">Advanced forms</a></li>
+                        <li><a href="forms-autocomplete.html">Autocomplete</a></li>
+                        <li><a href="forms-dropzone.html">Files upload</a></li>
+                        <li><a href="forms-texteditor.html">Text editor</a></li>
+                        <li><a href="forms-validation.html">Validation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#componentsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-light-bulb"></i>Components </a>
+                    <ul id="componentsDropdown" class="collapse list-unstyled ">
+                        <li><a href="components-cards.html">Cards</a></li>
+                        <li><a href="components-calendar.html">Calendar</a></li>
+                        <li><a href="components-gallery.html">Gallery</a></li>
+                        <li><a href="components-map.html">Maps</a></li>
+                        <li><a href="components-notifications.html">Notifications</a></li>
+                        <li><a href="components-loading-buttons.html">Loading buttons</a></li>
+                        <li><a href="components-preloader.html">Preloaders</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-website"></i>Pages </a>
+                    <ul id="pagesDropdown" class="collapse list-unstyled ">
+                        <li><a href="pages-contacts.html">Contacts</a></li>
+                        <li><a href="pages-invoice.html">Invoice</a></li>
+                        <li><a href="login.html">Login page</a></li>
+                        <li><a href="login-2.html">Login v.2 <span class="badge badge-info">New</span></a></li>
+                        <li><a href="pages-profile.html">Profile</a></li>
+                        <li><a href="pages-pricing.html">Pricing table</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </Authorized>
+        <NotAuthorized>
+            <span class="heading">Menu</span>
+            <ul class="list-unstyled">
+                <li> <a href="#"> <i class="icon-settings"></i>Home </a></li>
+                <li> <a href="#"> <i class="icon-writing-whiteboard"></i>About </a></li>
+                <li> <a href="#"> <i class="icon-writing-whiteboard"></i>Pricing </a></li>
+                <li> <a href="#"> <i class="icon-chart"></i>Contact Us </a></li>
+            </ul>
+        </NotAuthorized>
+    </AuthorizeView>
+</nav>
 
 @code {
-    bool collapseNavMenu = true;
-
-    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+    
 }
