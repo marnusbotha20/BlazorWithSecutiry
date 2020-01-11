@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazorise.Bootstrap" Version="0.8.7.2" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.8.7.2" />
     <PackageReference Include="bootstrap" Version="4.4.1" />
