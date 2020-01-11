@@ -18,3 +18,7 @@ h5, .h5 {
     margin: 10px 10px;
     width: 100%;
 }
+
+nav.navbar {
+    border-bottom: 1px solid #db6570!important;
+}

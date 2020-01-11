@@ -32,6 +32,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Composite" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
