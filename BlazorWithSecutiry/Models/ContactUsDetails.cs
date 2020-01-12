@@ -11,7 +11,7 @@ namespace BlazorWithSecutiry.Models
         public string Name { get; set; }
         public string Subject { get; set; }
         public string EmailAddress { get; set; }
-        public string Messgae { get; set; }
+        public string Message { get; set; }
 
     }
 }

@@ -27,7 +27,7 @@ namespace BlazorWithSecutiry.Service
             mail.From = new MailAddress(model.EmailAddress);
             mail.To.Add("planetthorndesigns@gmail.com");
             mail.Subject = model.Subject;
-            mail.Body = model.Messgae;
+            mail.Body = model.Message;
 
             SmtpClient SmtpServer = new SmtpClient
             {

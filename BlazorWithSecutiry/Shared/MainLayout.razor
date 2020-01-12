@@ -22,11 +22,15 @@
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <div class="navbar-header">
                 <!-- Navbar Header--><a href="index.html" class="navbar-brand">
-                    <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
-                    <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div>
+                    <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Planetthorn</strong><strong>Designs</strong></div>
+                    <div class="brand-text brand-sm"><strong class="text-primary">P</strong><strong>D</strong></div>
                 </a>
-                <!-- Sidebar Toggle Btn-->
-                <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
+                <AuthorizeView>
+                    <Authorized>
+                        <!-- Sidebar Toggle Btn-->
+                        <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
+                    </Authorized>
+                </AuthorizeView>
             </div>
             <LoginDisplay />
         </div>
@@ -36,12 +40,26 @@
 
 <div class="d-flex align-items-stretch">
 
-    <NavMenu/>
+    <NavMenu />
 
     <div class="page-content">
         <div class="page-header">
             <div class="container-fluid">
-                <h2 class="h5 no-margin-bottom">Dashboard</h2>
+                <AuthorizeView>
+                    <Authorized>
+                        <h2 class="h5 no-margin-bottom">Dashboard</h2>
+                    </Authorized>
+                    <NotAuthorized>
+                        <nav id="Verticalsidebar" class="align-items-center">
+                            <ul>
+                                <li> <a href="/"> <i class="icon-home"></i>Home </a></li>
+                                <li> <a href="About"> <i class="icon-info"></i>About </a></li>
+                                <li> <a href="Pricing"> <i class="icon-cloud"></i>Pricing </a></li>
+                                <li> <a href="ContactUs"> <i class="icon-contract"></i>Contact Us </a></li>
+                            </ul>
+                        </nav>
+                    </NotAuthorized>
+                </AuthorizeView>
             </div>
         </div>
 
@@ -50,7 +68,7 @@
         <footer class="footer">
             <div class="footer__block block no-margin-bottom">
                 <div class="container-fluid text-center">
-                    <p class="no-margin-bottom">2019 &copy; Your company. </p>
+                    <p class="no-margin-bottom">2019 &copy; Planetthorn Designs. </p>
                 </div>
             </div>
         </footer>

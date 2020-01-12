@@ -19,8 +19,11 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/DarkTheme/css/style.default.premium.css" id="theme-stylesheet">
     <link rel="stylesheet" href="~/DarkTheme/css/custom.css">
+    <link rel="stylesheet" href="~/DarkTheme/css/contactus.css">
+    <link rel="stylesheet" href="~/DarkTheme/vendor/summernote/summernote-bs4.css">
     <link rel="shortcut icon" href="~/DarkTheme/img/favicon.ico">
 
+    <link href="~/particles/css/style.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -34,14 +37,45 @@
     <script src="~/DarkTheme/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="~/DarkTheme/js/charts-home.js"></script>
 
-    <script src="~/DarkTheme/vendor/messenger-hubspot/build/js/messenger.min.js"></script>
-    <script src="~/DarkTheme/vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>
+    @*<script src="~/DarkTheme/vendor/messenger-hubspot/build/js/messenger.min.js"></script>
+        <script src="~/DarkTheme/vendor/messenger-hubspot/build/js/messenger-theme-flat.js"></script>*@
     <script src="~/DarkTheme/js/home-premium.js"></script>
     <script src="~/DarkTheme/js/front.js"></script>
 
+    <!-- Summernote-->
+    <script src="~/DarkTheme/vendor/summernote/summernote-bs4.min.js"></script>
+    <!-- Summernote init-->
+    <script src="~/DarkTheme/js/forms-texteditor.js"></script>
+
+
+    <script src="~/particles/js/particles.js"></script>
+    <script src="~/particles/js/app.js"></script>
     @*<script src="~/Identity/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/Identity/js/site.js" asp-append-version="true"></script>*@
+
+    <script>
+        var count_particles, stats, update;
+        stats = new Stats;
+        stats.setMode(0);
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '0px';
+        stats.domElement.style.top = '0px';
+        document.body.appendChild(stats.domElement);
+        count_particles = document.querySelector('.js-count-particles');
+        update = function () {
+            stats.begin();
+            stats.end();
+            if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+                count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+            }
+            requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+
+
+    </script>
+
 
     <script>
         function ShowErrorMessage(message) {

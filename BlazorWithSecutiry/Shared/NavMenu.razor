@@ -1,8 +1,10 @@
-﻿<nav id="sidebar">
-    <!-- Sidebar Header-->
-    <div class="sidebar-header d-flex align-items-center">
-        <AuthorizeView>
-            <Authorized>
+﻿
+<AuthorizeView>
+    <Authorized>
+        <nav id="sidebar">
+            <!-- Sidebar Header-->
+            <div class="sidebar-header d-flex align-items-center">
+
                 <a href="Profile">
                     <div class="avatar"><img src="/DarkTheme/img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
                 </a>
@@ -12,14 +14,10 @@
                     </h1>
                     <p>Web Designer</p>
                 </div>
-            </Authorized>
-        </AuthorizeView>
-    </div>
 
-    <!-- Sidebar Navidation Menus-->
+            </div>
 
-    <AuthorizeView>
-        <Authorized>
+            <!-- Sidebar Navidation Menus-->
             <span class="heading">Main</span>
             <ul class="list-unstyled">
                 <li class="active"><a href="/"> <i class="icon-home"></i>Home </a></li>
@@ -61,22 +59,12 @@
                     </ul>
                 </li>
                 <li>
-                    <BlazorWithSecutiry.Pages.Submenus.Pages/>
+                    <BlazorWithSecutiry.Pages.Submenus.Pages />
                 </li>
             </ul>
-        </Authorized>
-        <NotAuthorized>
-            <span class="heading">Menu</span>
-            <ul class="list-unstyled">
-                <li> <a href="#"> <i class="icon-home"></i>Home </a></li>
-                <li> <a href="#"> <i class="icon-info"></i>About </a></li>
-                <li> <a href="#"> <i class="fa fa-money"></i>Pricing </a></li>
-                <li> <a href="#"> <i class="icon-contract"></i>Contact Us </a></li>
-            </ul>
-        </NotAuthorized>
-    </AuthorizeView>
-</nav>
-
+        </nav>
+    </Authorized>
+</AuthorizeView>
 @code {
-    
+
 }

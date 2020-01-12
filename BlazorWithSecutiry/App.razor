@@ -5,7 +5,8 @@
     <NotFound>
         <CascadingAuthenticationState>
             <LayoutView Layout="@typeof(MainLayout)">
-                <p>Sorry, there's nothing at this address.</p>
+                @*<p>Sorry, there's nothing at this address.</p>*@
+                <BlazorWithSecutiry.Areas.Identity.Pages.Error.Error404/>
             </LayoutView>
         </CascadingAuthenticationState>
     </NotFound>

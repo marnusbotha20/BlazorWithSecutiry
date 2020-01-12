@@ -51,5 +51,11 @@
     <None Include="wwwroot\js\jquery-3.2.1.min.js" />
     <None Include="wwwroot\js\jquery.magnific-popup.min.js" />
     <None Include="wwwroot\js\owl.carousel.min.js" />
+    <None Include="wwwroot\particles\js\app.js" />
+    <None Include="wwwroot\particles\js\lib\stats.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Admin\" />
   </ItemGroup>
 </Project>
