@@ -53,7 +53,7 @@ a {
 }
 
 .text-gray-light {
-    color: #dee2e6
+    color: #2d3035
 }
 
 .text-gray {
@@ -202,7 +202,7 @@ pre {
 
 .page-content {
     position: relative;
-    background: #22252a;
+    background: #8a8d874a;
     min-height: 100vh;
     width: calc(100% - 280px);
     padding: 0;
@@ -367,7 +367,7 @@ i[class*='icon-'] {
     }
 
 nav.navbar {
-    background: #2d3035;
+    background: #8a8d874a;
     color: #8a8d93;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -1627,11 +1627,12 @@ nav#sidebar {
 }
 
 .bg-gray-dark {
-    background: #2d3035
+    background: #8a8d874a;
+    color: #22252a;
 }
 
 .bg-gray-darker {
-    background: #22252a
+    background: #2d303500;
 }
 
 .form-control {
@@ -5559,6 +5560,7 @@ div#logodesc {
     border-radius: 15px;
 }
 
+
 nav#Verticalsidebar {
     width: 800px;
     background: #2d3035;
@@ -5753,3 +5755,15 @@ nav#Verticalsidebar {
             content: '\f106'
         }
 
+.lighThemeBox {
+    /* border:1px solid red; */
+    background: #2d303524;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+img.img-fluid.mb-4 {
+    background: #2d3035;
+    border-radius: 5px;
+    padding: 5px;
+}
