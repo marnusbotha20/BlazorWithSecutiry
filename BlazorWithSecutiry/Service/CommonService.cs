@@ -1,11 +1,11 @@
 ﻿using BlazorWithSecutiry.DataAccess;
 using BlazorWithSecutiry.Models;
-using Microsoft.AspNetCore.Blazor.Components;
+//using Microsoft.AspNetCore.Blazor.Components;
 using System.Net.Mail;
 
 namespace BlazorWithSecutiry.Service
 {
-    public class CommonService : BlazorComponent
+    public class CommonService //: BlazorComponent
     {
         CommonDAL common = new CommonDAL();
         public void Create(ContactUsDetails model)
