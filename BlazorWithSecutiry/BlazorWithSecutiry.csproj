@@ -15,8 +15,6 @@
   <ItemGroup>
     <Compile Remove="Areas\Identity\IdentityHostingStartup.cs" />
     <Compile Remove="DAL\EmployeeContext.cs" />
-    <Compile Remove="MigrationConfiguration.cs" />
-    <Compile Remove="Service\UtilityService.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +24,8 @@
   <ItemGroup>
     <PackageReference Include="Blazorise.Bootstrap" Version="0.8.7.2" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.8.7.2" />
-    <PackageReference Include="bootstrap" Version="4.5.3" />
-    <PackageReference Include="EntityFramework" Version="6.4.0" />
-    <PackageReference Include="jQuery" Version="3.5.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.2.0-preview1.20073.1" />
+    <PackageReference Include="bootstrap" Version="4.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="0.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
@@ -43,7 +39,6 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
