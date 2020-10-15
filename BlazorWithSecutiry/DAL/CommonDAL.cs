@@ -23,5 +23,20 @@ namespace BlazorWithSecutiry.DataAccess
                 throw ex;
             }
         }
+
+        public async Task<List<string>> MigrationDatabase()
+        {
+            var result = new List<string>();
+            lock (db)
+            {
+                foreach (var item in db.Migrate())
+                {
+                    result.Add(item);
+                }
+            }
+
+            var filtered = result.Where(r => !string.IsNullOrEmpty(r)).ToList();
+            return await Task.FromResult(filtered).ConfigureAwait(false);
+        }
     }
 }

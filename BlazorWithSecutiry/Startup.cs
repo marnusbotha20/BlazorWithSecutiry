@@ -20,6 +20,8 @@ using System;
 using Microsoft.Extensions.Options;
 using BlazorWithSecutiry.Areas.Identity;
 using Microsoft.AspNetCore.Identity;
+//using System.Configuration;
+using System.Data.Entity.Migrations;
 
 namespace BlazorWithSecutiry
 {
@@ -28,7 +30,6 @@ namespace BlazorWithSecutiry
 
         private readonly IWebHostEnvironment _env;
         private readonly IConfiguration _configuration;
-
         public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
             _env = env;
@@ -57,6 +58,7 @@ namespace BlazorWithSecutiry
             services.AddSingleton<CourseService>();
             services.AddSingleton<AuthenticationService>();
             services.AddSingleton<CommonService>();
+            //services.AddSingleton<UtilityService>();
 
             services.AddBlazorise(options =>
             {
@@ -76,6 +78,11 @@ namespace BlazorWithSecutiry
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+
+                //_utilityService.MigrationDatabase(new System.Threading.CancellationToken);
+
+                //var configuration = new Configuration();
+                //var migrator = new DbMigrator(configuration);
             }
             else
             {

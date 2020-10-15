@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BlazorWithSecutiry.DAL;
 using BlazorWithSecutiry.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -17,9 +18,53 @@ namespace BlazorWithSecutiry.Data
         public DbSet<Company> Company { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Cities> Cities { get; internal set; }
+
         public DbSet<Courses> Courses { get; set; }
         public DbSet<EmployeeCourse> EmployeeCourse { get; set; }
         public DbSet<ContactUsDetails> ContactUsDetails { get; set; }
+
+        public IEnumerable<string> Migrate()
+        {
+            yield return $"Starting database migration for {nameof(ApplicationDbContext)}";
+            foreach (var item in RunFolderScripts("before-migrate"))
+            {
+                yield return item;
+            }
+
+            foreach (var item in ContextMigration.Migrate(this))
+            {
+                yield return item;
+            }
+
+            foreach (var item in RunFolderScripts("after-migrate"))
+            {
+                yield return item;
+            }
+
+
+            //yield return "Seeding data...";
+
+            //foreach (var item in this.EnsureSeeded())
+            //{
+            //    yield return item;
+            //}
+
+            //foreach (var item in RunFolderScripts("after-seed"))
+            //{
+            //    yield return item;
+            //}
+
+            yield return "Database migration complete";
+        }
+
+        private IEnumerable<string> RunFolderScripts(string subFolder)
+        {
+            var res = this.ExecuteMigrationScripts($"Scr\\Aw\\{subFolder}\\run-once", true);
+            foreach (var item in res) yield return item;
+
+            var runAlways = this.ExecuteMigrationScripts($"Scr\\Aw\\{subFolder}\\run-always", false);
+            foreach (var item in runAlways) yield return item;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
